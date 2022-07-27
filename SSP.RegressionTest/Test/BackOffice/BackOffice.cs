@@ -1,23 +1,22 @@
 ﻿using System;
-using System.Configuration;
 using System.Threading;
 using NUnit.Framework;
-using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 using SSP.RegressionTest.Modal;
-using SSP.RegressionTest.Pages;
+using SSP.RegressionTest.Helper;
 
 namespace SSP.RegressionTest.BackOffice
 {
-    class BackOfficeMainPage : DriverHelper
+    class BackOffice : DriverHelper
     {
         [SetUp]
         public void Setup()
         {
+            ChromeSettings setting = new();
             ChromeOptions options = new();
-            options.AddArgument("user-data-dir=C:/Users/myt/AppData/Local/Google/Chrome/User Data");
-            options.AddArgument("profile-directory=Profile 2");
+            options.AddArgument(setting.Userdatadir);
+            options.AddArgument(setting.Userprofile);
 
             driver = new ChromeDriver(options);
         }
@@ -26,7 +25,6 @@ namespace SSP.RegressionTest.BackOffice
         public void BOM001_Impersonate_CloudOps_should_successful()
         {
             driver.Navigate().GoToUrl("https://sitecoredev.service-now.com/");
-            //Thread.Sleep(5000);
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
             wait.Until(e => e.Url.Contains("dashboard"));
 

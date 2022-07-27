@@ -1,9 +1,8 @@
-﻿using System;
-using System.Threading;
-using NUnit.Framework;
-using OpenQA.Selenium;
+﻿using NUnit.Framework;
 using OpenQA.Selenium.Chrome;
-using Microsoft.Extensions.Configuration;
+using SSP.RegressionTest.Helper;
+using System;
+using System.Threading;
 
 namespace SSP.RegressionTest.TestSandbox
 {
@@ -12,25 +11,18 @@ namespace SSP.RegressionTest.TestSandbox
         [Test]
         public void BasicOpenBrowserWithHelper()
         {
-            //Implemented appsettings.json file, replacement for app.config file
-            IConfiguration config = new ConfigurationBuilder()
-                .AddJsonFile("appsettings.json")
-                .Build();
-            //To retrieve the value 
-            var userdatadir = config.GetValue<string>("datadir");
-            var userprofile = config.GetValue<string>("chromesettings:user-profile");
-            var customargs = config.GetValue<string>("chromesettings:customargs:insideargs");
-
+            ChromeSettings setting = new();
             ChromeOptions options = new();
-            options.AddArgument(userdatadir);
-            options.AddArgument(userprofile);
+            options.AddArgument(setting.Userdatadir);
+            options.AddArgument(setting.Userprofile);
+
             driver = new ChromeDriver(options);
 
             driver.Navigate().GoToUrl(@"http://selenium.dev");
 
             var title = driver.Title;
 
-            Console.WriteLine($"printing to console: {title} , custom message {customargs}");
+            Console.WriteLine($"printing to console: {title} ");
             Thread.Sleep(2000);
 
             driver.Quit();
