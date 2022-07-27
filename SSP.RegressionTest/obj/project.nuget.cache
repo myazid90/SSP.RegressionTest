@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "mpbgs5FyfQ+bL5DxelUgixT9gX3UJFLgQwYYU/C/XtEKzdrWZrvkhi1ATqwwpnUT7jvD3bMtE5BgYneyFK6daw==",
+  "dgSpecHash": "Tv/9JwVOPd07l3Arp0V7QrmmS65SDWeOTAvXBO8Y5CWZ12WtIyZKnlozY76DkjmR6rTWWsZ+Iqszh6F/3ruKxw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\myt\\source\\repos\\SSP.RegressionTest\\SSP.SmokeTest\\SSP.RegressionTest.csproj",
+  "projectFilePath": "C:\\Users\\myt\\source\\repos\\SSP.RegressionTest\\SSP.RegressionTest\\SSP.RegressionTest.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\myt\\.nuget\\packages\\microsoft.codecoverage\\17.2.0\\microsoft.codecoverage.17.2.0.nupkg.sha512",
     "C:\\Users\\myt\\.nuget\\packages\\microsoft.extensions.configuration\\7.0.0-preview.6.22324.4\\microsoft.extensions.configuration.7.0.0-preview.6.22324.4.nupkg.sha512",

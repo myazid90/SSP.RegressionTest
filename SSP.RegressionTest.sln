@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32616.157
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SSP.RegressionTest", "SSP.SmokeTest\SSP.RegressionTest.csproj", "{53E98007-7984-4530-AE0F-7185E4EB7BD5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SSP.RegressionTest", "SSP.RegressionTest\SSP.RegressionTest.csproj", "{53E98007-7984-4530-AE0F-7185E4EB7BD5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

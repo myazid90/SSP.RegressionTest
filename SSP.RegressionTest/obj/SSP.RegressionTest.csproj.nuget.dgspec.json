@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\myt\\source\\repos\\SSP.RegressionTest\\SSP.SmokeTest\\SSP.RegressionTest.csproj": {}
+    "C:\\Users\\myt\\source\\repos\\SSP.RegressionTest\\SSP.RegressionTest\\SSP.RegressionTest.csproj": {}
   },
   "projects": {
-    "C:\\Users\\myt\\source\\repos\\SSP.RegressionTest\\SSP.SmokeTest\\SSP.RegressionTest.csproj": {
+    "C:\\Users\\myt\\source\\repos\\SSP.RegressionTest\\SSP.RegressionTest\\SSP.RegressionTest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\myt\\source\\repos\\SSP.RegressionTest\\SSP.SmokeTest\\SSP.RegressionTest.csproj",
+        "projectUniqueName": "C:\\Users\\myt\\source\\repos\\SSP.RegressionTest\\SSP.RegressionTest\\SSP.RegressionTest.csproj",
         "projectName": "SSP.RegressionTest",
-        "projectPath": "C:\\Users\\myt\\source\\repos\\SSP.RegressionTest\\SSP.SmokeTest\\SSP.RegressionTest.csproj",
+        "projectPath": "C:\\Users\\myt\\source\\repos\\SSP.RegressionTest\\SSP.RegressionTest\\SSP.RegressionTest.csproj",
         "packagesPath": "C:\\Users\\myt\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\myt\\source\\repos\\SSP.RegressionTest\\SSP.SmokeTest\\obj\\",
+        "outputPath": "C:\\Users\\myt\\source\\repos\\SSP.RegressionTest\\SSP.RegressionTest\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\myt\\AppData\\Roaming\\NuGet\\NuGet.Config",
