@@ -22,7 +22,7 @@ namespace SSP.RegressionTest.BackOffice
         }
 
         [Test]
-        public void BOM001_Impersonate_CloudOps_should_successful()
+        public void BOF001_Impersonate_CloudOps_should_successful()
         {
             driver.Navigate().GoToUrl("https://sitecoredev.service-now.com/");
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
