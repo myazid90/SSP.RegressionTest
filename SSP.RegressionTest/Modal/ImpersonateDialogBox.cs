@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using OpenQA.Selenium;
+using SSP.RegressionTest.Helper;
 using System.Threading;
-using System.Threading.Tasks;
-using OpenQA.Selenium;
 
 namespace SSP.RegressionTest.Modal
 {

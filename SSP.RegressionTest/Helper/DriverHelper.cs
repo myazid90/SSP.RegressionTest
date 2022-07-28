@@ -1,7 +1,7 @@
 ﻿using System;
 using OpenQA.Selenium;
 
-namespace SSP.RegressionTest
+namespace SSP.RegressionTest.Helper
 {
     public class DriverHelper
     {

@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Threading;
 using NUnit.Framework;
-using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
+using SSP.RegressionTest.Helper;
 
 namespace SSP.RegressionTest.FrontEnd
 {
@@ -12,25 +11,32 @@ namespace SSP.RegressionTest.FrontEnd
         [SetUp]
         public void Setup()
         {
+            ChromeSettings setting = new();
             ChromeOptions options = new();
-            options.AddArgument("user-data-dir=C:/Users/myt/AppData/Local/Google/Chrome/User Data");
-            options.AddArgument("profile-directory=Profile 2");
+            options.AddArgument(setting.Userdatadir);
+            options.AddArgument(setting.Userprofile);
 
-            //options.AddArguments(args);
             driver = new ChromeDriver(options);
         }
 
         [Test]
-        // Only two widgets should be visible. 
-        // Knowledge Base and Status Page. 
+        [Description("Scenario: Unauthorized/Public user accessing SSP Portal." +
+            "Only two modules should be visible, Knowledge Base and Status Page.")]
         public void SHP001_LimitedModules_should_VisibleForUnauthorizedUser()
         {
+            //Arrange
+            int expectedModulesCount = 2;
+            string[] expectedModules = { "Knowledge Base", "Status Page" };
+
+            //Act
             driver.Navigate().GoToUrl("https://sitecoredev.service-now.com/csm");
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(2));
             wait.Until(e => e.PageSource.Contains("Self-Service Portal"));
+            Pages.SSPHomePage ssphomepage = new();
 
-            string[] widgets = { "Knowledge Base", "Status Page" };
-            Assert.That(widgets, Is.AnyOf(driver.PageSource));
+            //Assert
+            Assert.That(expectedModulesCount, Is.EqualTo(ssphomepage.Modules.Count), "Incorrect modules count");
+            Assert.That(expectedModules, Is.AnyOf(ssphomepage.Modules), "Incorrect modules name");
         }
 
         public void SHP002_AllModules_should_VisibleForCTC()
