@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using NUnit.Framework;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
@@ -29,9 +30,9 @@ namespace SSP.RegressionTest.FrontEnd
             string[] expectedModules = { "Knowledge Base", "Status Page" };
 
             //Act
-            driver.Navigate().GoToUrl("https://sitecoredev.service-now.com/csm");
-            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(2));
-            wait.Until(e => e.PageSource.Contains("Self-Service Portal"));
+            LoginHelper loginhelper = new();
+            loginhelper.LoginToSNow(false);
+
             Pages.SSPHomePage ssphomepage = new();
 
             //Assert
@@ -39,9 +40,23 @@ namespace SSP.RegressionTest.FrontEnd
             Assert.That(expectedModules, Is.AnyOf(ssphomepage.Modules), "Incorrect modules name");
         }
 
+        [Test]
         public void SHP002_AllModules_should_VisibleForCTC()
         {
+            // Arrange
+            int expectedModulesCount = 4;
+            string[] expectedModules = { "Knowledge Base", "Status Page", "Support Cases", "Upload Files" };
 
+            //Act
+            LoginHelper loginhelper = new();
+            loginhelper.LoginToSNow("Kirk Wolfe", "kirk.wolfe@westernsouthernlife.com", true);
+
+            Thread.Sleep(3000);
+            Pages.SSPHomePage ssphomepage = new();
+
+            //Assert
+            Assert.That(expectedModulesCount, Is.EqualTo(ssphomepage.Modules.Count), "Incorrect modules count");
+            Assert.That(expectedModules, Is.AnyOf(ssphomepage.Modules), "Incorrect modules name");
         }
 
         [TearDown]

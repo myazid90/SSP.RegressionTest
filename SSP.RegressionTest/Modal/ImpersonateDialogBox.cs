@@ -10,7 +10,7 @@ namespace SSP.RegressionTest.Modal
         IWebElement userFound => driver.FindElement(By.XPath("/html/body/div[9]/ul/li"));
 
 
-        public void EnterName(string value)
+        public void EnterID(string value)
         {
             nameField.SendKeys(value);
         }
