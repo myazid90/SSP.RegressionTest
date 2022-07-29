@@ -22,24 +22,37 @@ namespace SSP.RegressionTest.BackOffice
         }
 
         [Test]
-        public void BOF001_Impersonate_CloudOps_should_successful()
+        [Ignore("Shoule not be running as a test")]
+        public void BOF001_Admin_login_should_successful()
         {
-            driver.Navigate().GoToUrl("https://sitecoredev.service-now.com/");
-            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
-            wait.Until(e => e.Url.Contains("dashboard"));
+            //Arrange
+            LoginHelper loginhelper = new();
+            loginhelper.LoginToSNow();
 
+            //Act
             Pages.BackOffice backOffice = new Pages.BackOffice();
-            backOffice.ClickUserInfo();
-            backOffice.ClickImpersonate();
 
-            ImpersonateDialogBox impersonateDialogBox = new ImpersonateDialogBox();
-            impersonateDialogBox.EnterName("Balaji Punniyakodi");
-            impersonateDialogBox.ClickUser();
+            //Assert
+            Assert.That(backOffice.GetUserInfoAttribute("aria-label"),
+                Is.SupersetOf("Yazid Tahir"), "Yazid Tahir impersonation fail");
+        }
 
-            Thread.Sleep(3000);
-            Assert.That(backOffice.GetUserInfoAttribute("aria-label"), 
+        [Test]
+        public void BOF002_Impersonate_CloudOps_should_successful()
+        {
+            //Arrange
+            LoginHelper loginhelper = new();
+            loginhelper.LoginToSNow("Balaji Punniyakodi","bal@sitecore.net");
+
+            //Act
+            Pages.BackOffice backOffice = new Pages.BackOffice();
+
+            //Assert
+            Assert.That(backOffice.GetUserInfoAttribute("aria-label"),
                 Is.SupersetOf("Balaji Punniyakodi"), "Balaji Punniyakodi impersonation fail");
         }
+
+        
 
         [TearDown]
         public void TearDown()
