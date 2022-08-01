@@ -18,7 +18,7 @@ namespace SSP.RegressionTest.Helper
             {
                 //public user
                 driver.Navigate().GoToUrl("https://sitecoredev.service-now.com/csm");
-                WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(2));
+                WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
                 wait.Until(e => e.PageSource.Contains("Self-Service Portal"));
             }
         }
@@ -30,7 +30,7 @@ namespace SSP.RegressionTest.Helper
 
             if (redirectToSSPHomePage)
             {
-                WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(2));
+                WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
                 wait.Until(e => e.PageSource.Contains("Self-Service Portal"));
             }
             else
