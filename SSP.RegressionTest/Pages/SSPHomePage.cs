@@ -8,24 +8,46 @@ namespace SSP.RegressionTest.Pages
     {
         //Property
         public List<string> Modules { get; set; }
-        private IList<IWebElement> widgetContainer { get; set; }
+        public string SSPTitle { get; set; }
+        private IList<IWebElement> widgetsContainer { get; set; }
+        private IList<IWebElement> widgets { get; set; }
 
         internal SSPHomePage()
         {
             //List variable instantiate
             Modules = new List<string>();
+            widgets = new List<IWebElement>();
 
-            //Getting widgets from the first row
-            widgetContainer = driver.FindElements(By.CssSelector("div.ng-scope.m-t-n > div > sp-page-row > div > div"));
-            //Getting widgets from the second row here
-            //
+            //Getting all containers
+            widgetsContainer = driver.FindElements(By.CssSelector("body > div > section > main > div.ng-scope"));
 
+            //Getting widget from only 2&3 contatiner rows
+            for (int i = 2; i < widgetsContainer.Count; i++)
+            {
+                foreach(var widget in widgetsContainer[i].FindElements(By.CssSelector("div > sp-page-row > div > div")))
+                {
+                    widgets.Add(widget);
+                }
+            }
+
+            GetSSPHomePageTitle();
             GetWidgetName();
+        }
+
+        private void GetSSPHomePageTitle()
+        {
+            for (int i = 0; i < widgetsContainer.Count; i++)
+            {
+                if (i == 0)
+                {
+                    SSPTitle = widgetsContainer[i].Text;
+                }
+            }
         }
 
         private void GetWidgetName()
         {
-            foreach (var widget in widgetContainer)
+            foreach (var widget in widgets)
             {
                 if (widget.Displayed == true)
                 {
