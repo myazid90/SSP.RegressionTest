@@ -21,7 +21,7 @@ namespace SSP.RegressionTest.FrontEnd
         }
 
         [Test]
-        [Description("Scenario: Unauthorized/Public user accessing SSP Portal." +
+        [Description("Scenario: Unauthorized/Public user accessing SSP Portal. " +
             "Only two modules should be visible, Knowledge Base and Status Page.")]
         public void SHP001_LimitedModules_should_VisibleForUnauthorizedUser()
         {
@@ -41,11 +41,15 @@ namespace SSP.RegressionTest.FrontEnd
         }
 
         [Test]
+        [Description("Scenario: An authorized Cloud Customer Contact(CTC) user accessing SSP Portal. " +
+            "All modules should be visible. ")]
         public void SHP002_AllModules_should_VisibleForCTC()
         {
             // Arrange
-            int expectedModulesCount = 4;
-            string[] expectedModules = { "Knowledge Base", "Status Page", "Support Cases", "Upload Files" };
+            int expectedModulesCount = 8;
+            string[] expectedModules = { 
+                "Knowledge Base", "Status Page", "Support Cases", "Upload Files",
+                "View Service Requests", "Create Service Requests", "Cloud Consumption", "Cloud Availability"};
 
             //Act
             LoginHelper loginhelper = new();

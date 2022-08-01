@@ -30,7 +30,8 @@ namespace SSP.RegressionTest.Helper
 
             if (redirectToSSPHomePage)
             {
-                //Need assert
+                WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(2));
+                wait.Until(e => e.PageSource.Contains("Self-Service Portal"));
             }
             else
             {
@@ -41,14 +42,14 @@ namespace SSP.RegressionTest.Helper
             }
         }
 
-        internal void LoginAsAdmin()
+        private void LoginAsAdmin()
         {
             driver.Navigate().GoToUrl("https://sitecoredev.service-now.com/");
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
             wait.Until(e => e.Url.Contains("dashboard"));
         }
 
-        internal void LoginAsImpersonatee(string impersonateeUserID)
+        private void LoginAsImpersonatee(string impersonateeUserID)
         {
             Pages.BackOffice backOffice = new Pages.BackOffice();
             backOffice.ClickUserInfo();
