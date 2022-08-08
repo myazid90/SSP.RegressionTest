@@ -23,7 +23,7 @@ namespace SSP.RegressionTest.BackOffice
 
         [Test]
         [Ignore("Shoule not be running as a test")]
-        public void BOF001_Admin_login_should_successful()
+        public void BOF001_Admin_login_shouldbe_successful()
         {
             //Arrange
             LoginHelper loginhelper = new();
@@ -38,7 +38,7 @@ namespace SSP.RegressionTest.BackOffice
         }
 
         [Test]
-        public void BOF002_Impersonate_CloudOps_should_successful()
+        public void BOF002_Impersonate_CloudOps_shouldbe_successful()
         {
             //Arrange
             LoginHelper loginhelper = new();

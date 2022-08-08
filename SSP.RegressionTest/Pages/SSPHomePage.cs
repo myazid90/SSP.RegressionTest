@@ -1,15 +1,18 @@
 ﻿using OpenQA.Selenium;
 using SSP.RegressionTest.Helper;
+using System;
 using System.Collections.Generic;
 
 namespace SSP.RegressionTest.Pages
 {
     class SSPHomePage : DriverHelper
     {
-        //Property
+        //Public properties
         public List<string> Modules { get; set; }
         public string SSPTitle { get; set; }
-        private IList<IWebElement> widgetsContainer { get; set; }
+
+        //Private properties
+        private IList<IWebElement> widgetsContainer => driver.FindElements(By.CssSelector("body > div > section > main > div.ng-scope"));
         private IList<IWebElement> widgets { get; set; }
 
         internal SSPHomePage()
@@ -18,8 +21,6 @@ namespace SSP.RegressionTest.Pages
             Modules = new List<string>();
             widgets = new List<IWebElement>();
 
-            //Getting all containers
-            widgetsContainer = driver.FindElements(By.CssSelector("body > div > section > main > div.ng-scope"));
 
             //Getting widget from only 2&3 contatiner rows
             for (int i = 2; i < widgetsContainer.Count; i++)
@@ -32,6 +33,25 @@ namespace SSP.RegressionTest.Pages
 
             GetSSPHomePageTitle();
             GetWidgetName();
+            
+        }
+
+        public void SelectModule(string moduleName)
+        {
+            var elementfound = false;
+            foreach(var widget in widgets)
+            {
+                if (moduleName == widget.Text)
+                {
+                    widget.Click();
+                    elementfound = true;
+                    break;
+                }
+            }
+            if (!elementfound)
+            {
+                throw new Exception("Widget not found");
+            }
         }
 
         private void GetSSPHomePageTitle()
