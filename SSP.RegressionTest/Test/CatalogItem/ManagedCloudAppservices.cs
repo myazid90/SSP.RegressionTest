@@ -24,6 +24,8 @@ namespace SSP.RegressionTest.CatalogItem
         public void MCA601_Sales_CTCUser_Submits_GetDetailedConsumptionReport_shouldbe_successfull()
         {
             // Arrange
+            string catalog = "Sitecore Managed Cloud AppServices";
+            string category = "Sales";
             string catItem = "Get Detailed Consumption Report";
 
             LoginHelper loginhelper = new();
@@ -36,34 +38,31 @@ namespace SSP.RegressionTest.CatalogItem
             Thread.Sleep(2000);
             
             Pages.CreateServiceRequest ritmpage = new();
-            ritmpage.SelectCatalog("Sitecore Managed Cloud AppServices");
+            ritmpage.SelectCatalog(catalog);
             Thread.Sleep(3000);
 
-            ritmpage.SelectCategory("Sales");
+            ritmpage.SelectCategory(category);
             Thread.Sleep(3000);
 
             ritmpage.SelectCatalogItem(catItem);
             Thread.Sleep(3000);
 
-            //goto catalog item page
+            ////Catalog item page
             Pages.CatalogItem catalogitempage = new();
-
-            //Populate form
-            catalogitempage.PopulateField("Timezone", "Asia Pacific");
-
-            //Click Submit
+            Thread.Sleep(2000);
+            ////Populate form
+            catalogitempage.PopulateFieldNew("Timezone", "Asia Pacific");
+            
+            ////Click Submit
             catalogitempage.Submit();
             Thread.Sleep(2000);
 
-            //goto detail service request page
+            ////Detail service request page
             Pages.DetailServiceRequest currentsr = new();
 
-            var q = currentsr.Title;
 
             //Assert
             Assert.That("CSM Service Catalog - Customer Support", Is.EqualTo(currentsr.Title), "Wrong page");
-            //Assert.That(expectedModulesCount, Is.EqualTo(ssphomepage.Modules.Count), "Incorrect modules count");
-            //Assert.That(expectedModules, Is.AnyOf(ssphomepage.Modules), "Incorrect modules name");
         }
 
         [TearDown]
