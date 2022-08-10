@@ -68,10 +68,7 @@ namespace SSP.RegressionTest.FrontEnd
         {
             // Arrange
             int expectedModulesCount = 5;
-            string[] expectedModules = {
-                "Knowledge Base", "Status Page", "Support Cases", "Upload Files",
-                "View Service Requests", "Create Service Requests", "Cloud Consumption", "Cloud Availability"};
-            string[] notAvailableModules = {
+            string[] notExpectedModules = {
                 "Upload Files", "Cloud Consumption", "Cloud Availability"};
 
             //Act
@@ -83,7 +80,7 @@ namespace SSP.RegressionTest.FrontEnd
 
             //Assert
             Assert.That(expectedModulesCount, Is.EqualTo(ssphomepage.Modules.Count), "Incorrect modules count");
-            Assert.That(notAvailableModules, Is.Not.AnyOf(ssphomepage.Modules, "Unauthorized modules are visible"));
+            Assert.That(notExpectedModules, Is.Not.AnyOf(ssphomepage.Modules, "Unauthorized modules are visible"));
         }
 
         [TearDown]

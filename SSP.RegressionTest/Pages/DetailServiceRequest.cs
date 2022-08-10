@@ -18,7 +18,6 @@ namespace SSP.RegressionTest.Pages
 
         internal DetailServiceRequest()
         {
-            //Status = srStatus.Text;
             Title = driver.Title;
         }
     }
